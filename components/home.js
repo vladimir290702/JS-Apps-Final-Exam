@@ -13,8 +13,8 @@ const template = () => html`
 class Home extends HTMLElement {
     constructor() {
         super();
-        console.log(`Home`);
     }
+    
     connectedCallback() {
         this.render();
     }
