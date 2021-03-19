@@ -8,41 +8,38 @@
     <link href="../static/css/site.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-       <script src="./init.js" type="module" defer></script>
+    <script src="./init.js" type="module" defer></script>
 </head>
 
-<body>  
+<body>
     <div class="container" id="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
             <a class="navbar-brand text-light" href="/">Movies</a>
-            <ul class="navbar-nav ml-auto "> 
+            <ul class="navbar-nav ml-auto ">
                 <li class="nav-item">
                     <a class="nav-link">Welcome, email</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
-                </li> 
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
-                </li> 
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
-                </li> 
+                </li>
             </ul>
         </nav>
 
         <div id="root"></div>
-        
-  <!--       <section class="notifications" style="display: none;">
+        <section class="notifications" style="display: none;">
             <p class="notification-message" id="errorBox">Message...</p>
         </section>
         <section class="notifications"  style="display: none;background-color:rgba(1, 131, 29, 0.541);">
             <p class="notification-message" id="successBox">Message...</p>
         </section> 
-        
 
-        
-        
+        <!--      
         <h1 class="text-center">Movies</h1>
         <section>
             <a href="#" class="btn btn-warning ">Add Movie</a>
@@ -154,10 +151,33 @@
 -->
         <footer class="page-footer font-small">
             <div class="footer-copyright text-center py-3">© 2020
-                <a href="https://softuni.bg/trainings/2840/js-applications-june-2020/internal" class="text-dark">JS Applications</a>
+                <a href="https://softuni.bg/trainings/2840/js-applications-june-2020/internal" class="text-dark">JS
+                    Applications</a>
             </div>
         </footer>
     </div>
+    <script>
 
+        function notify(message, type = 'success') {
+            let notificationElement;
+
+            switch (type) {
+                case 'succes':
+                    notificationElement = document.getElementById('successBox');
+                    break;
+                case 'error':
+                    notificationElement = document.getElementById('errorBox');
+                    break;
+            }
+
+            notificationElement.innerText = message;
+            notificationElement.parentElement.style.display = 'block';
+
+            setTimeout(() => {
+                notificationElement.parentElement.style.display = 'none';
+            }, 3000)
+        }
+    </script>
 </body>
+
 </html>

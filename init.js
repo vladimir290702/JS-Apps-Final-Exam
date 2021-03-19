@@ -1,4 +1,4 @@
-import {Router} from 'https://unpkg.com/@vaadin/router';
+import { Router } from 'https://unpkg.com/@vaadin/router';
 import Home from './components/home.js';
 import Register from './components/register.js';
 import Login from './components/login.js';

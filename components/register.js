@@ -37,17 +37,21 @@ class Register extends HTMLElement {
         let password = formData.get('password');
         let repeatPassword = formData.get('repeatPassword');
 
-        if(password.length < 6) {
-            console.error('password too short');
+        if (password.length < 6) {
+            notify('Password must be at least 6 characters long', 'error')
+            return;
         }
 
-        if(password != repeatPassword) {
-            console.error('passwords must match');
+        if (password != repeatPassword) {
+            notify('Passwords must match', 'error')
+            return;
         }
+
+        notify('Succesful Registration', 'success');
     }
 
     render() {
-        render(template(this), this, {eventContext: this})
+        render(template(this), this, { eventContext: this })
     }
 }
 
