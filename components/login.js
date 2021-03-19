@@ -1,7 +1,7 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
-const template = () => html`
-       <form class="text-center border border-light p-5" action="" method="">
+const template = (ctx) => html`
+       <form class="text-center border border-light p-5" @submit=${ctx.onLogin}>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" placeholder="Email" name="email" value="">
@@ -24,8 +24,14 @@ class Login extends HTMLElement {
         this.render();
     }
 
+    onLogin(e) {
+        e.preventDefault();
+
+        console.log(e);
+    }
+
     render() {
-        render(template(), this)
+        render(template(this), this, {eventContext: this})
     }
 }
 
