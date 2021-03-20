@@ -4,10 +4,14 @@ import { logout } from './services/authServices.js';
 import Home from './components/homeComponent.js';
 import Register from './components/registerComponent.js';
 import Login from './components/loginComponent.js';
+import Movies from './components/movies.js';
+import MovieCard from './components/movie-card.js';
 
 customElements.define('home-component', Home);
 customElements.define('register-component', Register)
 customElements.define('login-component', Login);
+customElements.define('movies-component', Movies);
+customElements.define('movie-card', MovieCard);
 
 const root = document.getElementById('root');
 const router = new Router(root);
