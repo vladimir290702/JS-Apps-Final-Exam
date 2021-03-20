@@ -162,7 +162,7 @@
             let notificationElement;
 
             switch (type) {
-                case 'succes':
+                case 'success':
                     notificationElement = document.getElementById('successBox');
                     break;
                 case 'error':
@@ -178,6 +178,22 @@
             }, 3000)
         }
     </script>
+
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBLmQaI-s_TS1mqt2m3Z2LhrQ1_h9IgrMQ",
+    authDomain: "movies-e39f9.firebaseapp.com",
+    projectId: "movies-e39f9",
+    storageBucket: "movies-e39f9.appspot.com",
+    messagingSenderId: "406633596874",
+    appId: "1:406633596874:web:b56718d255efd580d7b133"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 
 </html>
