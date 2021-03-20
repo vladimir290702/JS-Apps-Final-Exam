@@ -1,7 +1,7 @@
 import { Router } from 'https://unpkg.com/@vaadin/router';
-import Home from './components/home.js';
-import Register from './components/register.js';
-import Login from './components/login.js';
+import Home from './components/homeComponent.js';
+import Register from './components/registerComponent.js';
+import Login from './components/loginComponent.js';
 
 customElements.define('home-component', Home);
 customElements.define('register-component', Register)

@@ -1,4 +1,5 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
+import { login } from '../services/authServices.js';
 
 const template = (ctx) => html`
        <form class="text-center border border-light p-5" @submit=${ctx.onLogin}>
@@ -27,7 +28,18 @@ class Login extends HTMLElement {
     onLogin(e) {
         e.preventDefault();
 
-        console.log(e);
+        let formData = new FormData(e.target);
+        let email = formData.get('email');
+        let password = formData.get('password');
+
+        login(email, password)
+            .then(res => {
+                notify('Succesful Logged In', 'success');
+           // redirect???     history.pushState({}, "", '/')
+            })
+            .catch(err => {
+                notify(err.message, 'error');
+            })
     }
 
     render() {
