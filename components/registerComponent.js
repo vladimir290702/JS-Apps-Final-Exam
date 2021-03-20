@@ -51,7 +51,7 @@ class Register extends HTMLElement {
         register(email, password)
             .then(res => {
                 notify('Succesful Registration', 'success');
-           // redirect???     history.pushState({}, "", '/')
+                Router.go('/');
             })
             .catch(err => {
                 notify(err.message, 'error');
