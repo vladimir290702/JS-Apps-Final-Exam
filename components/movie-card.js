@@ -7,14 +7,13 @@ const template = (ctx) => html`
            <h4 class="card-title">${ctx.data.movie}</h4>
        </div>
        <div class="card-footer">
-           <a href="#/details/6lOxMFSMkML09wux6sAF"><button type="button" class="btn btn-info">Details</button></a>
+           <a href="/details/${ctx.data.key}"><button type="button" class="btn btn-info">Details</button></a>
        </div>
 </div>
 `
 
 class MovieCard extends HTMLElement {
     connectedCallback() {
-        console.log(this.data);
         this.render();
     }
 

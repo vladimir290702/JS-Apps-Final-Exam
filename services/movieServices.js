@@ -7,3 +7,9 @@ export const getAllMovies = async (searchText) => {
 
     return Object.keys(response).map(key => ({key, ...response[key]})).filter(x => !searchText || searchText == x.title);
 }
+
+export const getOneMovie = async (id) => {
+    let response = await request(`${databaseUrl}movies/${id}.json`, 'GET');
+    
+    return response;
+}
