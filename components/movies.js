@@ -4,7 +4,7 @@ import { getAllMovies } from '../services/movieServices.js';
 const template = (ctx) => html`
     <h1 class="text-center">Movies</h1>
         <section>
-            <a href="#" class="btn btn-warning ">Add Movie</a>
+            <a href="/addMovie" class="btn btn-warning ">Add Movie</a>
             <form class="search float-right">
                 <label>Search: </label>
                 <input type="text">
