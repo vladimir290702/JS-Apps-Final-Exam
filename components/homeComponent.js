@@ -10,7 +10,8 @@ const template = (ctx) => html`
         </div> 
 
         ${ctx.user.isAuthenticated
-        ? html`<movies-component></movies-component>`
+        ? html`
+            <movies-component></movies-component>`   
         : nothing
     }
 `;

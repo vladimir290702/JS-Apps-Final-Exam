@@ -1,6 +1,6 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
-import { getOneMovie } from '../services/movieServices.js';
+import { getOneMovie, likeMovie, deleteMovie } from '../services/movieServices.js';
 import { getUserData } from '../services/authServices.js';
 
 const hasLikes = (likes, email) => {
@@ -21,13 +21,13 @@ const template = (ctx) => html`
                     <p>${ctx.description}</p>
                     ${ctx.creator == ctx.user.email
         ? html`
-                        <a class="btn btn-danger" href="#">Delete</a>
+                        <a class="btn btn-danger" href="/delete/${ctx.key}" @click=${ctx.onDeleteMovie}>Delete</a>
                         <a class="btn btn-warning" href="/edit/${ctx.key}">Edit</a>
                     `
         : html`
         ${hasLikes(ctx.likes, ctx.user.email)
                 ? html`<span class="enrolled-span">Liked ${Object.keys(ctx.likes).length}</span>`
-                : html`<a class="btn btn-primary" href="#">Like</a>`
+                : html`<a class="btn btn-primary" href="#" @click=${ctx.onLike}>Like</a>`
             }`
     }          
                 </div>
@@ -47,6 +47,24 @@ class MovieDetails extends HTMLElement {
                 Object.assign(this, data);
                 this.render();
             })
+    }
+
+    onDeleteMovie(e) {
+        e.preventDefault();
+
+        deleteMovie(this.location.params.id)
+        .then(res => {
+            this.render();
+        })
+    }
+
+    onLike(e) {
+        e.preventDefault();
+
+        likeMovie(this.location.params.id, this.user.email)
+        .then(res => {
+            this.render();
+        })
     }
 
     render() {

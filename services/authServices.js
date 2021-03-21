@@ -1,6 +1,7 @@
 const apiKey = 'AIzaSyBLmQaI-s_TS1mqt2m3Z2LhrQ1_h9IgrMQ';
 const registerUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`;
 const loginUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
+
 import { Router } from 'https://unpkg.com/@vaadin/router';
 
 import { request } from './requestServices.js';

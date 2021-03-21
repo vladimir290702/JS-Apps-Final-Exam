@@ -1,5 +1,6 @@
 import { Router } from 'https://unpkg.com/@vaadin/router';
 import { logout } from './services/authServices.js';
+import { deleteMovie } from './services/movieServices.js';
 
 import Home from './components/homeComponent.js';
 import Register from './components/registerComponent.js';
@@ -18,7 +19,6 @@ customElements.define('movie-card', MovieCard);
 customElements.define('movie-details', MovieDetails);
 customElements.define('add-movie', AddMovie);
 customElements.define('edit-movie', EditMovie);
-
 
 const root = document.getElementById('root');
 const router = new Router(root);
@@ -47,6 +47,14 @@ router.setRoutes([
     {
         path: '/edit/:id',
         component: 'edit-movie',
+    },
+    {
+        path: '/delete/:id',
+        action: (context, commands) => {
+            deleteMovie();
+
+            return commands.redirect('/');
+        }
     },
     {
         path: '/logout',

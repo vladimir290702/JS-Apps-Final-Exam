@@ -5,8 +5,12 @@ const databaseUrl = 'https://movies-e39f9-default-rtdb.firebaseio.com/';
 
 export const getAllMovies = async (searchText) => {
     let response = await request(`${databaseUrl}movies.json`, 'GET');
-    
-    return Object.keys(response).map(key => ({ key, ...response[key] })).filter(x => !searchText || searchText == x.title);
+
+    if (response != undefined) {
+        return Object.keys(response).map(key => ({ key, ...response[key] })).filter(x => !searchText || searchText == x.title);
+    }
+
+    return response;
 }
 
 export const getOneMovie = async (id) => {
@@ -31,4 +35,16 @@ export const addMovie = async (title, description, imageUrl) => {
         key,
     })
     return secondResponse;
+}
+
+export const likeMovie = async (id, creator) => {
+    let response = await request(`${databaseUrl}movies/${id}/likes.json`, 'POST', { creator });
+
+    return response;
+}
+
+export const deleteMovie = async (id) => {
+    let response = await fetch(`${databaseUrl}movies/${id}.json`, { method: "DELETE" });
+
+    return response;
 }
