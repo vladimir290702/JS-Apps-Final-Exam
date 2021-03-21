@@ -4,6 +4,7 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import { addMovie } from '../services/movieServices.js';
 
 const template = (ctx) => html`
+<navigation-component></navigation-component>
 
 <form class="text-center border border-light p-5" action="#" method="" @submit=${ctx.onAddMovie}>
             <h1>Add Movie</h1>

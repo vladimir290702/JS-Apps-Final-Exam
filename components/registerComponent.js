@@ -4,6 +4,8 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import { register } from '../services/authServices.js';
 
 const template = (ctx) => html`
+<navigation-component></navigation-component>
+
         <form class="text-center border border-light p-5" @submit=${ctx.onRegister}>
             <div class="form-group">
                 <label for="email">Email</label>

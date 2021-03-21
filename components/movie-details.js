@@ -1,15 +1,20 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
+import { Router } from 'https://unpkg.com/@vaadin/router';
 
 import { getOneMovie, likeMovie, deleteMovie } from '../services/movieServices.js';
 import { getUserData } from '../services/authServices.js';
 
 const hasLikes = (likes, email) => {
-    return Object
-        .values(likes)
-        .some(like => like.creator == email);
+    if (likes) {
+        return Object
+            .values(likes)
+            .some(like => like.creator == email);
+    }
 }
 
 const template = (ctx) => html`
+<navigation-component></navigation-component>
+
         <div class="container">
             <div class="row bg-light text-dark">
             <h1>Movie title: ${ctx.movie}</h1>
@@ -53,18 +58,18 @@ class MovieDetails extends HTMLElement {
         e.preventDefault();
 
         deleteMovie(this.location.params.id)
-        .then(res => {
-            this.render();
-        })
+            .then(res => {
+                Router.go('/')
+            })
     }
 
     onLike(e) {
         e.preventDefault();
 
         likeMovie(this.location.params.id, this.user.email)
-        .then(res => {
-            this.render();
-        })
+            .then(res => {
+                this.render();
+            })
     }
 
     render() {

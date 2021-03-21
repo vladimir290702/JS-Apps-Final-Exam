@@ -10,7 +10,9 @@ import MovieCard from './components/movie-card.js';
 import MovieDetails from './components/movie-details.js';
 import AddMovie from './components/addMovie.js';
 import EditMovie from './components/editMovie.js';
+import Navigation from './components/navigation.js';
 
+customElements.define('navigation-component', Navigation);
 customElements.define('home-component', Home);
 customElements.define('register-component', Register)
 customElements.define('login-component', Login);
@@ -60,7 +62,6 @@ router.setRoutes([
         path: '/logout',
         action: (context, commands) => {
             logout();
-
             return commands.redirect('/');
         }
     }

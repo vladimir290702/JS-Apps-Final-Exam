@@ -2,6 +2,7 @@ import { html, render, nothing } from 'https://unpkg.com/lit-html?module';
 import { getUserData } from '../services/authServices.js';
 
 const template = (ctx) => html`
+<navigation-component></navigation-component>
         <div class="jumbotron jumbotron-fluid text-light" style="background-color: #343a40;">
             <img src="https://s.studiobinder.com/wp-content/uploads/2019/06/Best-M-Night-Shyamalan-Movies-and-Directing-Style-StudioBinder.jpg"
                 class="img-fluid" alt="Responsive image">

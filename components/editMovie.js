@@ -3,6 +3,9 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import { getUserData } from '../services/authServices.js';
 
 const template = (ctx) => html`
+<navigation-component></navigation-component>
+
+
 <form class="text-center border border-light p-5" action="#" method="" @submit=${ctx.editMovie}>
             <h1>Edit Movie</h1>
             <div class="form-group">
