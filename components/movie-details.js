@@ -3,6 +3,12 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import { getOneMovie } from '../services/movieServices.js';
 import { getUserData } from '../services/authServices.js';
 
+const hasLikes = (likes, email) => {
+    return Object
+        .values(likes)
+        .some(like => like.creator == email);
+}
+
 const template = (ctx) => html`
         <div class="container">
             <div class="row bg-light text-dark">
@@ -16,13 +22,14 @@ const template = (ctx) => html`
                     ${ctx.creator == ctx.user.email
         ? html`
                         <a class="btn btn-danger" href="#">Delete</a>
-                        <a class="btn btn-warning" href="#">Edit</a>
+                        <a class="btn btn-warning" href="/edit/${ctx.key}">Edit</a>
                     `
         : html`
-                        <a class="btn btn-primary" href="#">Like</a>
-                        <span class="enrolled-span">Liked 1</span>
-                    `
-}          
+        ${hasLikes(ctx.likes, ctx.user.email)
+                ? html`<span class="enrolled-span">Liked ${Object.keys(ctx.likes).length}</span>`
+                : html`<a class="btn btn-primary" href="#">Like</a>`
+            }`
+    }          
                 </div>
             </div>
         </div>

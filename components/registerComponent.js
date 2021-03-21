@@ -1,3 +1,5 @@
+import { Router } from 'https://unpkg.com/@vaadin/router';
+
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import { register } from '../services/authServices.js';
 
