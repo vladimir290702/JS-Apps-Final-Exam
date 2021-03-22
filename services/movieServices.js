@@ -48,3 +48,13 @@ export const deleteMovie = async (id) => {
 
     return response;
 }
+
+export const editMovie = async (id, title, description, imageUrl) => {
+   const body = {
+       title,description,imageUrl
+   }
+
+    let response = await fetch(`${databaseUrl}movies/${id}.json`, { method: "PATCH", body: JSON.stringify(body) });
+
+    return response;
+}

@@ -27,7 +27,7 @@ const template = (ctx) => html`
                     ${ctx.creator == ctx.user.email
         ? html`
                         <a class="btn btn-danger" href="/delete/${ctx.key}" @click=${ctx.onDeleteMovie}>Delete</a>
-                        <a class="btn btn-warning" href="/edit/${ctx.key}">Edit</a>
+                        <a class="btn btn-warning" href="/edit/${ctx.key}" >Edit</a>
                     `
         : html`
         ${hasLikes(ctx.likes, ctx.user.email)
@@ -69,6 +69,7 @@ class MovieDetails extends HTMLElement {
         likeMovie(this.location.params.id, this.user.email)
             .then(res => {
                 this.render();
+                Router.go('/');
             })
     }
 
