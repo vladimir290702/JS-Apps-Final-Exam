@@ -34,7 +34,13 @@ class Navigation extends HTMLElement {
     }
 
     onLogout() {
-        logout();
+        logout()
+            .then(res => {
+                notify('Succesfully loggedout', 'success');
+            })
+            .catch(err => {
+                notify(err.message, 'error');
+            })
 
         // this is just to redirect to some other page and with this logout problem is solved
         Router.go('/addMovie');

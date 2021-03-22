@@ -59,7 +59,11 @@ class MovieDetails extends HTMLElement {
 
         deleteMovie(this.location.params.id)
             .then(res => {
+                notify('Succesfully deleted movie', 'success');
                 Router.go('/')
+            })
+            .catch(error => {
+                notify(error.messge, 'error');
             })
     }
 
